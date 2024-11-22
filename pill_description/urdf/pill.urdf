@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+
+<robot name="pill">
+
+  <!-- Robot link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz=" 0 0 0 " rpy="1.570796 0 3.141592" />
+      <geometry>
+        <mesh
+          filename="package://pill_description/meshes/base.STL" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="dark_gray">
+        <color rgba="0.2 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 3.141592"/>
+      <geometry>
+        <cylinder length="0.473" radius="0.2365"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Laser link -->
+  <link name="laser">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 3.141592" />
+        <geometry>
+          <box size="0.01 0.01 0.01" />
+        </geometry>
+        <material name="gray">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+  </link>
+
+  <!-- Joint for laser -->
+  <joint name="laser_flag" type="fixed">
+    <origin xyz="0.1372 0 0.142" rpy="0 0 3.141592" />
+    <parent link="base_link"/>
+    <child link="laser" />
+  </joint>
+
+</robot>
