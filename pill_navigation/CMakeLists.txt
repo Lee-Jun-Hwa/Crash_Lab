@@ -14,7 +14,7 @@ find_package(std_msgs REQUIRED)
 
 install(
   DIRECTORY launch map config
-  pill_goal_txt.cpp
+  pill_goal_txt
   DESTINATION share/${PROJECT_NAME}
 )
 

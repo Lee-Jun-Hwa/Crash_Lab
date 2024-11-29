@@ -15,8 +15,8 @@ def generate_launch_description():
         'map',
         default=os.path.join(
             get_package_share_directory('pill_navigation'),
-            'map',
-            '112.yaml'))
+            '102',
+            '102.yaml'))
 
     param_dir = LaunchConfiguration(
         'params_file',
@@ -72,11 +72,20 @@ def generate_launch_description():
             arguments=['0','0','0','0','0','0','map','odom'],
             output='screen'
         ),
+        
+        Node(
+            package='my_navigation',  # navigation 패키지 이름
+            executable='pill_goal_txt',  # 빌드된 실행 파일 이름
+            name='pill_goal_txt',  # 노드 이름 (옵션)
+            output='screen',  # 출력 설정 (옵션)
+            parameters=['/home/min/alsong_ws/src/pill_navigation/config/navigation2.yaml'],  # 필요 시 파라미터 추가
+        )
+
 
 
 
 		IncludeLaunchDescription(
-			PythonLaunchDescriptionSource([pill_description_prefix,'/launch','/tetra_description.launch.py']),
+			PythonLaunchDescriptionSource([pill_description_prefix,'/launch','/pill_description.launch.py']),
 			launch_arguments={'use_rviz': 'false'}.items()
 		),
 		IncludeLaunchDescription(
