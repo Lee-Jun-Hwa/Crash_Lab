@@ -14,9 +14,18 @@ find_package(std_msgs REQUIRED)
 
 install(
   DIRECTORY launch map config
+  pill_goal_txt.cpp
   DESTINATION share/${PROJECT_NAME}
 )
 
+add_executable(pill_goal_txt src/pill_goal_txt.cpp)
+
+ament_target_dependencies(pill_goal_txt 
+  rclcpp 
+  rclcpp_action 
+  nav2_msgs 
+  geometry_msgs
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
